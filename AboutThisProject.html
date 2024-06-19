@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWEsome Portal - About This Project</title>
+    <style>
+        @font-face {
+            font-family: 'RubikOne';
+            src: url('./fonts/RubikOne-Regular.ttf'); /* Adjust the path based on the location of your CSS file */
+        }
+
+        a {
+            color: rgb(0, 255, 255)
+        }
+
+            a:hover, a:focus {
+                text-decoration: underline;
+            }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            font-family: 'RubikOne', sans-serif;
+            color: white;
+        }
+
+        #background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        #title {
+            text-align: center;
+            margin-top: 12vh; /* Adjust the margin to move it closer to the top */
+            margin-bottom: 100px;
+        }
+
+            #title img {
+                max-width: 90%;
+                height: auto;
+            }
+
+        #content {
+            position: relative;
+            overflow-y: scroll;
+            max-height: 70vh; /* Adjust the maximum height of the scrollable area */
+            margin-bottom: 80px;
+            width: 80%; /* Adjust the width of the scrollable area */
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            color: white;
+            font-family: 'RubikOne', sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+            /* Custom scrollbar styling */
+            #content::-webkit-scrollbar {
+                width: 12px;
+            }
+
+            #content::-webkit-scrollbar-thumb {
+                background-color: rgba(255, 255, 255, 0.5);
+                border-radius: 10px;
+            }
+
+            #content::-webkit-scrollbar-track {
+                background-color: rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+            }
+
+        /* Button styling */
+        #button {
+            position: absolute;
+            top: 22px;
+            left: 25px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            opacity: 0.5;
+        }
+
+            #button img {
+                max-width: 50px; /* Adjust the maximum width of the button image */
+                height: auto;
+            }
+
+            #button:hover {
+                opacity: 1;
+            }
+
+        @media (max-width: 768px) {
+            #button {
+                top: 11px;
+                left: 13px;
+            }
+
+                #button img {
+                    max-width: 30px; /* Adjust the maximum width for smaller screens */
+                }
+
+            #content {
+                font-size: 14px; /* Adjust the font size for smaller screens */
+            }
+        }
+
+        /* Language toggle button styling */
+        #lang-toggle {
+            top: 10px;
+            left: 10px;
+            margin-bottom: 20px 0;
+            cursor: pointer;
+            z-index: 1000; /* Ensure the toggle is above other elements */
+            font-family: 'RubikOne', sans-serif;
+            font-size: 13px;
+            color: white;
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-option {
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+            .lang-option.active {
+                opacity: 1;
+            }
+    </style>
+</head>
+<body>
+
+    <video id="background-video" autoplay loop muted>
+        <source src="./videos/Soft_BG.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div id="title">
+        <img src="./graphics/Titulo.png" alt="Project Title">
+    </div>
+
+    <div id="content">
+        <div id="lang-toggle">
+            <span id="en" class="lang-option active">EN</span> /
+            <span id="pt" class="lang-option">PT</span>
+        </div>
+        <div id="text-en">
+            <p>The project AWEsome Portal consists on the development of a web application capable of eliciting the emotion known as «Awe»-on-demand in a freely available, easy to use, and scientifically supported way. It is intended to be developed responsively so that anyone with access to the internet can access it, regardless of the device one is using.</p>
+            <p>Awe, a complex emotion loosely defined as the emotion of being amazed by something outside yourself, has been found to provide important benefits to an individual’s sense of well-being, health and sociability as well as social and environmental consciousness. It is a contradictory feeling in that it can be created by both positive and negative experiences, and experts have identified at least 8 sources. Nature is one of these sources, as well as moral beauty (acts of virtue), collective effervescence (shared joy and energy), music (mood-altering experience), art (reflective beauty), spirituality (mystical experiences), life and death (birth and mortality), and epiphany (deep realizations).</p>
+            <p>The contents provided are based on a specific type of Awe elicitor – Nature, and are curated taking into account current science regarding this emotion and to be validated by user studies to guarantee their efficacy. Three different immersive environments are featured: a lush rainforest, a vibrant underwater landscape and a thrilling deep space journey. Those were picked and developed according to the most common imagery to successfully elicit this emotion in previous literature that informed the project. </p>
+            <p>Daily exposure to Awe has both immediate and long term effects that build over time, it’s positive impact on the individuals and society’s well-being building up and improving over time by experiencing it on a regular basis. Studies have also proven that while not as effective as finding it in real life, simulated Awe through immersive virtual content does provide some amount of the same benefits. </p>
+            <p>This AWEsome Portal aims to bring nature-awe to as many people as possible, to produce both the individual and societal benefits attributed to it. The software is currently in development and its contents will be subjected to iterations and reviews in order to provide a purposeful, useful and robust application that will fulfill this need.</p>
+            <p>References and sources can be found <a href="References.html">here.</a></p>
+        </div>
+        <div id="text-pt" style="display: none;">
+            <p>O projeto AWEsome Portal consiste no desenvolvimento de uma aplicação web capaz de evocar a emoção conhecida como «Awe» on demand, de forma gratuita, fácil de usar e cientificamente sustentada. Pretende-se que seja desenvolvida de forma responsiva para que qualquer pessoa com acesso à internet a possa aceder, independentemente do dispositivo que esteja a utilizar.</p>
+            <p>O «Awe», uma emoção complexa definida vagamente como “a sensação de estar maravilhado por algo fora de si”, tem demonstrado importantes benefícios para o bem-estar individual, saúde e sociabilidade, bem como para a consciência social e ambiental. É um sentimento contraditório, pois tanto pode ser criado por experiências positivas como negativas, e os especialistas identificaram pelo menos 8 fontes. A Natureza é uma dessas fontes, assim como a beleza moral (atos de virtude), a efervescência coletiva (alegria e energia compartilhadas), a música (experiência alteradora de humor), a arte (beleza reflexiva), a espiritualidade (experiências místicas), a vida e a morte (nascimento e mortalidade), e a epifania (realizações profundas).</p>
+            <p>Os conteúdos fornecidos baseiam-se num tipo específico de indutor de «Awe» – a Natureza, e foram selecionados tendo em conta a pesquisa científica atual sobre esta emoção, tendo sido ainda validados por estudos com utilizadores para garantir a sua eficácia. São apresentados três diferentes ambientes imersivos: uma floresta tropical exuberante, uma paisagem subaquática vibrante e uma emocionante viagem pelo espaço profundo. Estes foram escolhidos e desenvolvidos de acordo com as imagens consideradas serem as mais comuns para evocar esta emoção, conforme a literatura prévia que informou o projeto.</p>
+            <p>A exposição diária ao «Awe» tem efeitos imediatos, a longo prazo e cumulativos, com impacto positivo no bem-estar dos indivíduos e da sociedade, aumentando e melhorando com o tempo ao experienciá-la regularmente. Existem ainda estudos que demonstraram que, embora não seja tão eficaz quanto a experiência na vida real, a simulação de «Awe» através de conteúdo virtuais imersivos proporciona alguns dos mesmos benefícios.</p>
+            <p>Este AWEsome Portal tem como objetivo trazer a «Awe» da natureza ao maior número possível de pessoas, para produzir tanto os benefícios individuais como os sociais a ela atribuídos. O software está atualmente em desenvolvimento e os seus conteúdos serão sujeitos a iterações e revisões para fornecer uma aplicação direccionada, útil e robusta que satisfaça esta necessidade.</p>
+            <p>Pode consultar referências e fontes <a href="References.html">aqui.</a></p>
+        </div>
+    </div>
+
+    <a id="button" href="MainMenu.html">
+        <img src="./graphics/back_arrow.png" alt="Button Image">
+    </a>
+
+    <script>
+        document.getElementById('lang-toggle').addEventListener('click', function (event) {
+            const enText = document.getElementById('text-en');
+            const ptText = document.getElementById('text-pt');
+            const enOption = document.getElementById('en');
+            const ptOption = document.getElementById('pt');
+            if (event.target.id === 'en') {
+                enText.style.display = 'block';
+                ptText.style.display = 'none';
+                enOption.classList.add('active');
+                ptOption.classList.remove('active');
+            } else if (event.target.id === 'pt') {
+                enText.style.display = 'none';
+                ptText.style.display = 'block';
+                enOption.classList.remove('active');
+                ptOption.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

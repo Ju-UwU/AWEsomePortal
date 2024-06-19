@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWEsome Portal</title>
+    <style>
+        @font-face {
+            font-family: 'RubikOne';
+            src: url('./fonts/RubikOne-Regular.ttf'); /* Ajuste o caminho com base na localização do seu arquivo CSS */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            font-family: 'RubikOne', sans-serif;
+            color: white;
+        }
+
+        #background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        #title {
+            text-align: center;
+            margin-top: 12vh; /* Ajuste a margem conforme necessário */
+            margin-bottom: 220px;
+        }
+
+            #title img {
+                max-width: 90%;
+                height: auto;
+            }
+
+        .menu-item {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            font-family: RubikOne;
+            color: white;
+            font-size: 24px;
+            font-weight: 400;
+            word-wrap: break-word;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-bottom: 60px; /* Ajuste o espaçamento entre os itens do menu */
+            width: 65%; /* Ajuste a largura conforme necessário */
+            text-align: center;
+        }
+
+            .menu-item:hover {
+                background: rgba(255, 255, 255, 0.8);
+            }
+
+        .language-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: RubikOne;
+            color: white;
+            font-size: 18px;
+            transition: background 0.3s ease;
+        }
+
+            .language-button:hover {
+                background: rgba(255, 255, 255, 0.8);
+            }
+
+        /* Media query para telas menores */
+        @media (max-width: 768px) {
+            #title {
+                margin-top: 10vh; /* Ajuste a margem para telas menores */
+                max-width: 90%;
+            }
+
+            .menu-item {
+                width: 80%; /* Ajuste a largura para telas menores */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <video id="background-video" autoplay loop muted>
+        <source src="./videos/Soft_BG.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div id="title">
+        <img src="./graphics/Titulo.png" alt="Título do Projeto">
+    </div>
+
+    <!-- Botão para mudar idioma -->
+    <div class="language-button" onclick="changeLanguage()">
+        PT / EN
+    </div>
+
+    <!-- Itens do menu -->
+    <div class="menu-item" id="menu-get-started" onclick="window.location.href='ResponsiveGetStarted.html'">
+        Get Started
+    </div>
+
+    <!--<div class="menu-item" onclick="window.location.href='Options.html'">
+        Options
+    </div>-->
+
+    <div class="menu-item" id="menu-about-project" onclick="window.location.href='AboutThisProject.html'">
+        About This Project
+    </div>
+
+    <script>
+        // Função para alternar idioma
+        function changeLanguage() {
+            var languageButton = document.querySelector('.language-button');
+            var menuGetStarted = document.getElementById('menu-get-started');
+            var menuAboutProject = document.getElementById('menu-about-project');
+
+            if (languageButton.textContent.trim() === 'PT / EN') {
+                // Alterna para PT
+                languageButton.textContent = 'EN / PT';
+                menuGetStarted.textContent = 'Iniciar';
+                menuAboutProject.textContent = 'Sobre este Projeto';
+            } else {
+                // Alterna para EN
+                languageButton.textContent = 'PT / EN';
+                menuGetStarted.textContent = 'Get Started';
+                menuAboutProject.textContent = 'About This Project';
+            }
+        }
+    </script>
+
+</body>
+</html>

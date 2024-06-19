@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWEsome Portal</title>
+    <style>
+
+        @font-face {
+            font-family: 'RubikOne';
+            src: url('./fonts/RubikOne-Regular.ttf');
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            background: url('./graphics/bg_blue_desktop.png') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #title {
+            text-align: center;
+            margin-top: 20vh;
+            transform: translateY(-50%);
+        }
+
+            #title img {
+                max-width: 90%;
+                height: auto;
+            }
+
+        .portal-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 140vh; /* Adjust as needed */
+        }
+
+        .portal {
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            margin: 0 10px; /* Adjust spacing between portals */
+            width: 25%; /* Adjust width for four portals */
+            box-sizing: border-box;
+        }
+
+            .portal img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .portal:hover {
+                transform: scale(1.1);
+            }
+
+        .portal-label {
+            margin-top: -20px; /* Adjust as needed */
+            color: white;
+            font-size: 24px;
+            font-family: RubikOne;
+            font-weight: 400;
+            word-wrap: break-word
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 768px) {
+            .portal-container {
+                flex-wrap: wrap;
+            }
+
+            .portal {
+                width: 45%; /* Adjust width for two rows */
+                margin-bottom: 20px; /* Adjust spacing between rows */
+            }
+
+                .portal img {
+                    max-width: 100%;
+                }
+
+            .portal-label {
+                font-size: 14px; /* Adjust the font size for smaller screens */
+            }
+        }
+
+        /* Button styling */
+        #button {
+            position: absolute;
+            top: 22px;
+            left: 25px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            opacity: 0.5;
+        }
+
+            #button img {
+                max-width: 50px; /* Adjust the maximum width of the button image */
+                height: auto;
+            }
+
+            #button:hover {
+                opacity: 1;
+            }
+    </style>
+</head>
+<body>
+    <div id="title">
+        <img src="./graphics/choose.png" alt="Project Title">
+    </div>
+
+    <div class="portal-container">
+        <div class="portal" onclick="window.location.href='your_target_page1.html'">
+            <img src="./graphics/portal_cosmos_video.png" alt="Portal 1">
+            <div class="portal-label">Cosmos</div>
+        </div>
+
+        <div class="portal" onclick="window.location.href='your_target_page2.html'">
+            <img src="./graphics/portal_forest_world.png" alt="Portal 2">
+            <div class="portal-label">Forest World</div>
+        </div>
+
+        <div class="portal" onclick="window.location.href='your_target_page3.html'">
+            <img src="./graphics/portal_water_world.png" alt="Portal 3">
+            <div class="portal-label">Water World</div>
+        </div>
+
+        <a id="button" href="MainMenu.html">
+            <img src="./graphics/back_arrow.png" alt="Button Image">
+        </a>
+
+    </div>
+</body>
+</html>
