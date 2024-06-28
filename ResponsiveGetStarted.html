@@ -69,7 +69,38 @@
             }
 
         /* Landscape screens */
-        @media only screen and (min-width: 721px) {
+        @media only screen and (min-width: 721px) and (max-width: 1080px) {
+            #landscape-container {
+                display: block;
+            }
+
+            #portrait-container {
+                display: none;
+            }
+
+            #forest-portal-landscape {
+                top: 25%;
+                left: 15%;
+                width: 20%;
+                height: auto;
+            }
+
+            #space-portal-landscape {
+                top: 30%;
+                left: 50%;
+                width: 15%;
+                height: auto;
+            }
+
+            #water-portal-landscape {
+                top: 25%;
+                left: 75%;
+                width: 20%;
+                height: auto;
+            }
+        }
+
+        @media only screen and (min-width: 1081px) {
             #landscape-container {
                 display: block;
             }
@@ -111,24 +142,25 @@
             }
 
             #forest-portal-portrait {
-                top: 18px;
-                left: 440px;
-                width: 207px;
-                height: 300px;
+                top: 1%;
+                left: 75%;
+                width: 30%;
+                height: auto;
+                transform: translateX(-50%);
             }
 
             #bottom-portal-portrait {
-                top: 625px;
-                left: 304px;
-                width: 216px;
-                height: 310px;
+                top: 66%;
+                left: 42%;
+                width: 30%;
+                height: auto;
             }
 
             #mid-portal-portrait {
-                top: 355px;
-                left: 130px;
-                width: 152px;
-                height: 220px;
+                top: 37%;
+                left: 18%;
+                width: 21%;
+                height: auto;
             }
         }
 
