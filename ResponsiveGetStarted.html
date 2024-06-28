@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWEsome Portal</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .portal {
+            position: absolute;
+            cursor: pointer;
+        }
+
+            .portal img {
+                max-width: 100%;
+                height: auto;
+                transition: transform 0.3s ease;
+            }
+
+            .portal .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+            }
+
+            .portal:hover img {
+                transform: scale(1.1);
+            }
+
+        .fullscreen-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            background-color: black;
+            display: none;
+        }
+
+            .fullscreen-video video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        /* Landscape screens */
+        @media only screen and (min-width: 721px) {
+            #landscape-container {
+                display: block;
+            }
+
+            #portrait-container {
+                display: none;
+            }
+
+            #forest-portal-landscape {
+                top: 295px;
+                left: 270px;
+                width: 300px;
+                height: 450px;
+            }
+
+            #space-portal-landscape {
+                top: 380px;
+                left: 784px;
+                width: 225px;
+                height: 327px;
+            }
+
+            #water-portal-landscape {
+                top: 305px;
+                left: 1450px;
+                width: 300px;
+                height: 450px;
+            }
+        }
+
+        /* Portrait screens */
+        @media only screen and (max-width: 720px) {
+            #landscape-container {
+                display: none;
+            }
+
+            #portrait-container {
+                display: block;
+            }
+
+            #forest-portal-portrait {
+                top: 18px;
+                left: 440px;
+                width: 207px;
+                height: 300px;
+            }
+
+            #bottom-portal-portrait {
+                top: 625px;
+                left: 304px;
+                width: 216px;
+                height: 310px;
+            }
+
+            #mid-portal-portrait {
+                top: 355px;
+                left: 130px;
+                width: 152px;
+                height: 220px;
+            }
+        }
+
+        #button {
+            position: absolute;
+            top: 30px;
+            left: 25px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            opacity: 0.5;
+            z-index: 2;
+        }
+
+            #button img {
+                max-width: 50px;
+                height: auto;
+            }
+
+            #button:hover {
+                opacity: 1;
+            }
+    </style>
+</head>
+<body>
+
+    <!-- Landscape Video and Portal Container -->
+    <div id="landscape-container" class="video-container">
+        <video id="landscape-video" class="background-video" autoplay loop muted playsinline>
+            <source src="./videos/MenuHorizontalFundo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div id="forest-portal-landscape" class="portal" data-video="./videos/Selection1_H.mp4" data-redirect="ForestVideo.html">
+            <img src="./graphics/forestportal.gif" alt="Forest Portal">
+            <img class="overlay" src="./graphics/portal_empty02.png" alt="Overlay">
+        </div>
+
+        <div id="space-portal-landscape" class="portal" data-video="./videos/Selection2_H.mp4" data-redirect="SpaceVideo.html">
+            <img src="./graphics/spaceportal.gif" alt="Space Portal">
+            <img class="overlay" src="./graphics/portal_empty02.png" alt="Overlay">
+        </div>
+
+        <div id="water-portal-landscape" class="portal" data-video="./videos/Selection3_H.mp4" data-redirect="WaterVideo.html">
+            <img src="./graphics/waterportal.gif" alt="Water Portal">
+            <img class="overlay" src="./graphics/portal_empty02.png" alt="Overlay">
+        </div>
+    </div>
+
+    <!-- Portrait Video and Portal Container -->
+    <div id="portrait-container" class="video-container">
+        <video id="portrait-video" class="background-video" autoplay loop muted playsinline>
+            <source src="./videos/MenuVerticalFundo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div id="forest-portal-portrait" class="portal" data-video="./videos/Selection1_V.mp4" data-redirect="ForestVideo.html">
+            <img src="./graphics/forestportal.gif" alt="Forest Portal">
+            <img class="overlay" src="./graphics/portal_empty02.png" alt="Overlay">
+        </div>
+
+        <div id="mid-portal-portrait" class="portal" data-video="./videos/Selection2_V.mp4" data-redirect="WaterVideo.html">
+            <img src="./graphics/waterportal.gif" alt="Space Portal">
+            <img class="overlay" src="./graphics/portal_empty02.png" alt="Overlay">
+        </div>
+
+        <div id="bottom-portal-portrait" class="portal" data-video="./videos/Selection3_V.mp4" data-redirect="SpaceVideo.html">
+            <img src="./graphics/spaceportal.gif" alt="Water Portal">
+            <img class="overlay" src="./graphics/portal_empty02.png" alt="Overlay">
+        </div>
+    </div>
+
+    <!-- Fullscreen Video Container -->
+    <div id="fullscreen-video" class="fullscreen-video">
+        <video id="fullscreen-video-element" playsinline></video>
+    </div>
+
+    <a id="button" href="MainMenu.html">
+        <img src="./graphics/back_arrow.png" alt="Button Image">
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const portals = document.querySelectorAll('.portal');
+            const fullscreenVideoContainer = document.getElementById('fullscreen-video');
+            const fullscreenVideoElement = document.getElementById('fullscreen-video-element');
+
+            portals.forEach(portal => {
+                portal.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const videoSrc = portal.getAttribute('data-video');
+                    const redirectUrl = portal.getAttribute('data-redirect');
+
+                    fullscreenVideoElement.src = videoSrc;
+                    fullscreenVideoContainer.style.display = 'block';
+                    fullscreenVideoElement.play();
+
+                    fullscreenVideoElement.onended = () => {
+                        fullscreenVideoContainer.style.display = 'none';
+                        window.location.href = redirectUrl;
+                    };
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
