@@ -46,7 +46,8 @@
             }
 
         #portal {
-            text-align: center;
+            position: relative;
+            display: inline-block;
             cursor: pointer;
             margin-top: auto;
             margin-bottom: 20vh; /* Added margin to position the portal */
@@ -58,9 +59,18 @@
                 transition: transform 0.3s ease;
             }
 
-                #portal img:hover {
-                    transform: scale(1.1);
-                }
+            #portal .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none; /* Makes the overlay not interfere with pointer events */
+            }
+
+            #portal:hover img {
+                transform: scale(1.1);
+            }
 
         /* Media query for smaller screens */
         @media (max-width: 768px) {
@@ -86,7 +96,8 @@
     </div>
 
     <div id="portal" onclick="redirectToMainMenu()">
-        <img src="./graphics/portal_filled_02_circle.png" alt="Portal">
+        <img src="./graphics/splashportal.gif" alt="Portal">
+        <img class="overlay" src="./graphics/emptyportalcircle.png" alt="Overlay">
     </div>
 
     <script>
@@ -94,5 +105,6 @@
             window.location.href = 'MainMenu.html'; // Redirect to main menu page
         }
     </script>
+
 </body>
 </html>
