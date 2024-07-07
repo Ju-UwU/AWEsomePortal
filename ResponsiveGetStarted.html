@@ -68,6 +68,15 @@
                 object-fit: cover;
             }
 
+        .loading-image {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            display: none;
+        }
+
         /* Landscape screens */
         @media only screen and (min-width: 721px) and (max-width: 1080px) {
             #landscape-container {
@@ -193,17 +202,17 @@
             Your browser does not support the video tag.
         </video>
 
-        <div id="forest-portal-landscape" class="portal" data-video="./videos/Selection1_H.mp4" data-redirect="ForestVideo.html">
+        <div id="forest-portal-landscape" class="portal" data-video="./videos/Selection1_H.mp4" data-redirect="ForestVideo.html" data-loading="horizontal">
             <img src="./graphics/forestportal.gif" alt="Forest Portal">
             <img class="overlay" src="./graphics/portal_empty02.png" alt="Overlay">
         </div>
 
-        <div id="space-portal-landscape" class="portal" data-video="./videos/Selection2_H.mp4" data-redirect="SpaceVideo.html">
+        <div id="space-portal-landscape" class="portal" data-video="./videos/Selection2_H.mp4" data-redirect="SpaceVideo.html" data-loading="horizontal">
             <img src="./graphics/spaceportal.gif" alt="Space Portal">
             <img class="overlay" src="./graphics/portal_empty02.png" alt="Overlay">
         </div>
 
-        <div id="water-portal-landscape" class="portal" data-video="./videos/Selection3_H.mp4" data-redirect="WaterVideo.html">
+        <div id="water-portal-landscape" class="portal" data-video="./videos/Selection3_H.mp4" data-redirect="WaterVideo.html" data-loading="horizontal">
             <img src="./graphics/waterportal.gif" alt="Water Portal">
             <img class="overlay" src="./graphics/portal_empty02.png" alt="Overlay">
         </div>
@@ -216,17 +225,17 @@
             Your browser does not support the video tag.
         </video>
 
-        <div id="forest-portal-portrait" class="portal" data-video="./videos/Selection1_V.mp4" data-redirect="ForestVideo.html">
+        <div id="forest-portal-portrait" class="portal" data-video="./videos/Selection1_V.mp4" data-redirect="ForestVideo.html" data-loading="vertical">
             <img src="./graphics/forestportal.gif" alt="Forest Portal">
             <img class="overlay" src="./graphics/portal_empty02.png" alt="Overlay">
         </div>
 
-        <div id="mid-portal-portrait" class="portal" data-video="./videos/Selection2_V.mp4" data-redirect="WaterVideo.html">
+        <div id="mid-portal-portrait" class="portal" data-video="./videos/Selection2_V.mp4" data-redirect="WaterVideo.html" data-loading="vertical">
             <img src="./graphics/waterportal.gif" alt="Space Portal">
             <img class="overlay" src="./graphics/portal_empty02.png" alt="Overlay">
         </div>
 
-        <div id="bottom-portal-portrait" class="portal" data-video="./videos/Selection3_V.mp4" data-redirect="SpaceVideo.html">
+        <div id="bottom-portal-portrait" class="portal" data-video="./videos/Selection3_V.mp4" data-redirect="SpaceVideo.html" data-loading="vertical">
             <img src="./graphics/spaceportal.gif" alt="Water Portal">
             <img class="overlay" src="./graphics/portal_empty02.png" alt="Overlay">
         </div>
@@ -237,6 +246,10 @@
         <video id="fullscreen-video-element" playsinline></video>
     </div>
 
+    <!-- Loading Images -->
+    <img id="loading-horizontal" class="loading-image" src="./graphics/loading_horizontal.png" alt="Loading Horizontal">
+    <img id="loading-vertical" class="loading-image" src="./graphics/loading_vertical.png" alt="Loading Vertical">
+
     <a id="button" href="MainMenu.html">
         <img src="./graphics/back_arrow.png" alt="Button Image">
     </a>
@@ -246,12 +259,15 @@
             const portals = document.querySelectorAll('.portal');
             const fullscreenVideoContainer = document.getElementById('fullscreen-video');
             const fullscreenVideoElement = document.getElementById('fullscreen-video-element');
+            const loadingHorizontal = document.getElementById('loading-horizontal');
+            const loadingVertical = document.getElementById('loading-vertical');
 
             portals.forEach(portal => {
                 portal.addEventListener('click', (event) => {
                     event.preventDefault();
                     const videoSrc = portal.getAttribute('data-video');
                     const redirectUrl = portal.getAttribute('data-redirect');
+                    const loadingType = portal.getAttribute('data-loading');
 
                     fullscreenVideoElement.src = videoSrc;
                     fullscreenVideoContainer.style.display = 'block';
@@ -259,7 +275,18 @@
 
                     fullscreenVideoElement.onended = () => {
                         fullscreenVideoContainer.style.display = 'none';
-                        window.location.href = redirectUrl;
+
+                        if (loadingType === 'horizontal') {
+                            loadingHorizontal.style.display = 'block';
+                        } else {
+                            loadingVertical.style.display = 'block';
+                        }
+
+                        setTimeout(() => {
+                            loadingHorizontal.style.display = 'none';
+                            loadingVertical.style.display = 'none';
+                            window.location.href = redirectUrl;
+                        }, 500); // Adjust this timeout as needed
                     };
                 });
             });
