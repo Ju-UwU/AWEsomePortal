@@ -71,6 +71,24 @@
                 opacity: 1;
             }
 
+        .language-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: RubikOne;
+            color: white;
+            font-size: 18px;
+            transition: background 0.3s ease;
+        }
+
+            .language-button:hover {
+                background: rgba(255, 255, 255, 0.8);
+            }
+
         @media (max-width: 768px) {
             #button {
                 top: 11px;
@@ -98,6 +116,7 @@
             border-radius: 20px;
             font-size: 20px;
             line-height: 1.5;
+            text-align: center;
         }
 
             #references ul {
@@ -139,13 +158,15 @@
         <img src="./graphics/Titulo.png" alt="Project Title">
     </div>
 
-    <div id="subtitle">References</div>
+    <div id="subtitle">To Learn More</div>
 
     <div id="references">
         <ul>
-            <li>Jennifer Stellar - The Positive Effects of Positive Emotions - <a href="https://www.tedmed.com/talks/show?id=526817" target="_blank">Ted Talk</a></li>
-            <li>AWE The Delights and Dangers of Our Eleventh Emotion, Paul Pearsall - <a href="https://books.google.bj/books?id=cHGjAgAAQBAJ&printsec=copyright&hl=fr#v=onepage&q&f=false" target="_blank">Book</a></li>
-            <!-- Add more references as needed -->
+            <li id="ref-1">Alice Chirico et al - Effectiveness of Immersive Videos in Inducing Awe: An Experimental Study - <a href="https://www.nature.com/articles/s41598-017-01242-0" target="_blank">Article</a></li>
+            <li id="ref-2">Dacher Keltner - AWE The Transformative Power of Everyday Wonder - <a href="https://www.dacherkeltner.com/books" target="_blank">Book</a></li>
+            <li id="ref-3">Jennifer Stellar - The Positive Effects of Positive Emotions - <a href="https://www.tedmed.com/talks/show?id=526817" target="_blank">Ted Talk</a></li>
+            <li id="ref-4">Paul Pearsall - AWE The Delights and Dangers of Our Eleventh Emotion  - <a href="https://books.google.bj/books?id=cHGjAgAAQBAJ&printsec=copyright&hl=fr#v=onepage&q&f=false" target="_blank">Book</a></li>
+            <li id="ref-5">Paul Piff and Dacher Keltner - Why do We Experience Awe <a href="https://www.graceclarksville.com/wp-content/uploads/2018/01/Worship-Experience-for-Contemplative-Intellectual_Draft-2-1.pdf" target="_blank">Article</a></li>
         </ul>
     </div>
 
@@ -153,5 +174,39 @@
         <img src="./graphics/back_arrow.png" alt="Button Image">
     </a>
 
-</body>
-</html>
+    <!-- Language toggle button -->
+    <div class="language-button" onclick="changeLanguage()">
+        PT / EN
+    </div>
+
+    <script>// Function to toggle language
+        function changeLanguage() {
+            var languageButton = document.querySelector('.language-button');
+            var subtitle = document.getElementById('subtitle');
+            var ref1 = document.getElementById('ref-1');
+            var ref2 = document.getElementById('ref-2');
+            var ref3 = document.getElementById('ref-3');
+            var ref4 = document.getElementById('ref-4');
+            var ref5 = document.getElementById('ref-5');
+
+            if (languageButton.textContent.trim() === 'PT / EN') {
+                // Switch to PT
+                languageButton.textContent = 'EN / PT';
+                subtitle.textContent = 'Para Saber Mais';
+                ref1.innerHTML = 'Alice Chirico et al - Effectiveness of Immersive Videos in Inducing Awe: An Experimental Study - <a href="https://www.nature.com/articles/s41598-017-01242-0" target="_blank">Artigo</a>';
+                ref2.innerHTML = 'Dacher Keltner - AWE The Transformative Power of Everyday Wonder - <a href="https://www.dacherkeltner.com/books" target="_blank">Livro</a>';
+                ref3.innerHTML = 'Jennifer Stellar - The Positive Effects of Positive Emotions - <a href="https://www.tedmed.com/talks/show?id=526817" target="_blank">Ted Talk</a></li>';
+                ref4.innerHTML = 'Paul Pearsall - AWE The Delights and Dangers of Our Eleventh Emotion  - <a href="https://books.google.bj/books?id=cHGjAgAAQBAJ&printsec=copyright&hl=fr#v=onepage&q&f=false" target="_blank">Livro</a></li>';
+                ref5.innerHTML = 'Paul Piff and Dacher Keltner - Why do We Experience Awe <a href="https://www.graceclarksville.com/wp-content/uploads/2018/01/Worship-Experience-for-Contemplative-Intellectual_Draft-2-1.pdf" target="_blank">Artigo</a></li>';
+            } else {
+                // Switch to EN
+                languageButton.textContent = 'PT / EN';
+                subtitle.textContent = 'To Learn More';
+                ref1.innerHTML = 'Alice Chirico et al - Effectiveness of Immersive Videos in Inducing Awe: An Experimental Study - <a href="https://www.nature.com/articles/s41598-017-01242-0" target="_blank">Article</a>';
+                ref2.innerHTML = 'Dacher Keltner - AWE The Transformative Power of Everyday Wonder - <a href="https://www.dacherkeltner.com/books" target="_blank">Book</a>';
+                ref3.innerHTML = 'Jennifer Stellar - The Positive Effects of Positive Emotions - <a href="https://www.tedmed.com/talks/show?id=526817" target="_blank">Ted Talk</a></li>';
+                ref4.innerHTML = 'Paul Pearsall - AWE The Delights and Dangers of Our Eleventh Emotion  - <a href="https://books.google.bj/books?id=cHGjAgAAQBAJ&printsec=copyright&hl=fr#v=onepage&q&f=false" target="_blank">Book</a></li>';
+                ref5.innerHTML = 'Paul Piff and Dacher Keltner - Why do We Experience Awe <a href="https://www.graceclarksville.com/wp-content/uploads/2018/01/Worship-Experience-for-Contemplative-Intellectual_Draft-2-1.pdf" target="_blank">Article</a></li>';
+            }
+        }
+       </script>
